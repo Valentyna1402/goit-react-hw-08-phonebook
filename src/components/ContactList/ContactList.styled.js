@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const List = styled.ul`
   display: flex;
   gap: 16px;
-  padding: 20px;
 `;
 
 const Item = styled.li`

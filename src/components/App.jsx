@@ -1,47 +1,59 @@
-import { lazy } from 'react';
+import { lazy, useEffect } from 'react';
 import SharedLayout from './Layout';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
+import { useDispatch, useSelector } from 'react-redux';
+import operations from 'redux/Auth/authOperations';
+import authSelectors from 'redux/Auth/authSelectors';
 
-const HomeView = lazy(() => import('./views/HomeView'));
-const RegisterView = lazy(() => import('./views/RegisterView'));
-const LoginView = lazy(() => import('./views/LoginView'));
+const HomeView = lazy(() => import('./views/HomeView/HomeView'));
+const RegisterView = lazy(() => import('./views/RegisterView/RegisterView'));
+const LoginView = lazy(() => import('./views/LoginView/LoginView'));
 const ContactsView = lazy(() => import('./views/ContactsView'));
 
 export const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(operations.getCurrentUser());
+  }, [dispatch]);
+
+  const isRefreshingUser = useSelector(authSelectors.selectIsRefreshing);
 
   return (
-    <Routes>
-    <Route path="/" element={<SharedLayout />}>
-      <Route index element={<PublicRoute component={<HomeView />} />} />
-      <Route
-        path="/register"
-        element={
-          <PublicRoute
-            restricted
-            redirectTo="/contacts"
-            component={<RegisterView />}
+    !isRefreshingUser && (
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<PublicRoute component={<HomeView />} />} />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute
+                restricted
+                redirectTo="/contacts"
+                component={<RegisterView />}
+              />
+            }
           />
-        }
-      />
-      <Route
-        path="/login"
-        element={
-          <PublicRoute
-            restricted
-            redirectTo="/contacts"
-            component={<LoginView />}
+          <Route
+            path="/login"
+            element={
+              <PublicRoute
+                restricted
+                redirectTo="/contacts"
+                component={<LoginView />}
+              />
+            }
           />
-        }
-      />
-      <Route
-        path="/todos"
-        element={
-          <PrivateRoute redirectTo="/login" component={<ContactsView />} />
-        }
-      />
-    </Route>
-  </Routes>
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsView />} />
+            }
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    )
   );
 };

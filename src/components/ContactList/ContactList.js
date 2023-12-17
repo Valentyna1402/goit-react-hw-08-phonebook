@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { deleteContact } from 'redux/operations';
-import { selectVisibleContacts } from 'redux/selectors';
+import { deleteContact } from 'redux/Contacts/operations';
+import { selectVisibleContacts } from 'redux/Contacts/selectors';
 import {
   List,
   Item,

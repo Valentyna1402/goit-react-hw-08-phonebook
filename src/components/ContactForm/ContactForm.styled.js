@@ -66,9 +66,8 @@ const Button = styled.button`
 `;
 
 const Container = styled.div`
-  padding: 20px;
   max-width: 100%;
-  margin-bottom: 24px;
+  margin-bottom: 40px;
 `;
 
 export { ErrorMessage, Field, Form, FormGroup, Button, Container };

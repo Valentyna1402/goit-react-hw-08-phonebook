@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  padding: 20px;
   display: flex;
   gap: 16px;
   align-items: center;
+  margin-bottom: 30px;
 `;
 
 const Text = styled.label`

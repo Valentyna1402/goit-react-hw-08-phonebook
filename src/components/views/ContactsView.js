@@ -4,8 +4,8 @@ import { Filter } from "components/Filter/Filter";
 import { Loader } from "components/Loader";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "redux/operations";
-import { selectError, selectIsLoading, selectVisibleContacts } from "redux/selectors";
+import { fetchContacts } from "redux/Contacts/operations";
+import { selectError, selectIsLoading, selectVisibleContacts } from "redux/Contacts/selectors";
 
 export default function ContactsView () {
     const dispatch = useDispatch();
