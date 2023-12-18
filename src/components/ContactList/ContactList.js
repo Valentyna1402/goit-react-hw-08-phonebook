@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import ProfileImg from './profile.jpg';
 
 import { deleteContact } from 'redux/Contacts/operations';
 import { selectVisibleContacts } from 'redux/Contacts/selectors';
@@ -22,6 +23,7 @@ export const ContactList = () => {
       {contacts.map(contact => (
         <Item key={contact.id}>
           <Wrapper>
+            <img src={ProfileImg} alt="profile-img" width="60" />
             <Text>
               <AccentText>Name: </AccentText>
               {contact.name}

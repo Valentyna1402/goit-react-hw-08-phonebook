@@ -29,7 +29,7 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async values => {
     const name = values.name;
     const number = values.number;
     const isOnContacts = contacts.some(

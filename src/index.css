@@ -42,6 +42,28 @@ h3 {
 
 }
 
+button {
+border-radius: 8px;
+border-style: none;
+box-sizing: border-box;
+color: #000000;
+cursor: pointer;
+font-family: inherit;
+font-size: 16px;
+font-weight: 500;
+height: 50px;
+line-height: 20px;
+margin: 0;
+outline: none;
+padding: 15px 15px;
+position: relative;
+text-align: center;
+text-decoration: none;
+transition: color 100ms;
+vertical-align: baseline;
+touch-action: manipulation;
+}
+
 header {
   display: flex;
   align-items: center;

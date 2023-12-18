@@ -1,10 +1,9 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import operations from "redux/Auth/authOperations";
-import { Button, Form, Input, Label, Title, Wrapper } from "./LoginView.styled";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import operations from 'redux/Auth/authOperations';
+import { Button, Form, Input, Label, Title, Wrapper } from './LoginView.styled';
 
 export default function LoginView() {
-
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,34 +25,34 @@ export default function LoginView() {
     setEmail('');
     setPassword('');
   };
-    
-    return (
-      <Wrapper>
-        <Title>Welcome</Title>
-  
-        <Form onSubmit={handleSubmit} autoComplete="off">
-          <Label>
-            E-mail: 
-            <Input
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-            />
-          </Label>
-  
-          <Label>
-            Password: 
-            <Input
-              type="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-            />
-          </Label>
-  
-          <Button type="submit">Log in</Button>
-        </Form>
-      </Wrapper>
-    );
-  }
+
+  return (
+    <Wrapper>
+      <Title>Welcome</Title>
+
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <Label>
+          E-mail:
+          <Input
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+          />
+        </Label>
+
+        <Label>
+          Password:
+          <Input
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
+        </Label>
+
+        <Button type="submit">Log in</Button>
+      </Form>
+    </Wrapper>
+  );
+}
